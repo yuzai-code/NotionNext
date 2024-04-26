@@ -1,30 +1,29 @@
-import CONFIG from './config'
-import { createContext, useEffect, useState, useContext, useRef } from 'react'
-import Nav from './components/Nav'
-import { Footer } from './components/Footer'
-import JumpToTopButton from './components/JumpToTopButton'
-import Live2D from '@/components/Live2D'
+import Comment from '@/components/Comment'
+import replaceSearchResult from '@/components/Mark'
+import NotionPage from '@/components/NotionPage'
+import ShareBar from '@/components/ShareBar'
+import { siteConfig } from '@/lib/config'
 import { useGlobal } from '@/lib/global'
+import { deepClone, isBrowser } from '@/lib/utils'
+import { Transition } from '@headlessui/react'
+import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import Announcement from './components/Announcement'
+import { ArticleFooter } from './components/ArticleFooter'
+import { ArticleInfo } from './components/ArticleInfo'
+import { ArticleLock } from './components/ArticleLock'
+import BlogArchiveItem from './components/BlogArchiveItem'
+import BlogListBar from './components/BlogListBar'
 import { BlogListPage } from './components/BlogListPage'
 import { BlogListScroll } from './components/BlogListScroll'
-import { deepClone, isBrowser } from '@/lib/utils'
+import { Footer } from './components/Footer'
+import JumpToTopButton from './components/JumpToTopButton'
+import Nav from './components/Nav'
 import SearchNavBar from './components/SearchNavBar'
-import BlogArchiveItem from './components/BlogArchiveItem'
-import { ArticleLock } from './components/ArticleLock'
-import NotionPage from '@/components/NotionPage'
-import { ArticleInfo } from './components/ArticleInfo'
-import Comment from '@/components/Comment'
-import { ArticleFooter } from './components/ArticleFooter'
-import ShareBar from '@/components/ShareBar'
-import Link from 'next/link'
-import BlogListBar from './components/BlogListBar'
-import { Transition } from '@headlessui/react'
+import CONFIG from './config'
 import { Style } from './style'
-import replaceSearchResult from '@/components/Mark'
-import { siteConfig } from '@/lib/config'
-import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 
 const AlgoliaSearchModal = dynamic(() => import('@/components/AlgoliaSearchModal'), { ssr: false })
 
@@ -86,9 +85,9 @@ const LayoutBase = props => {
                 </div>
 
                 {/* 左下悬浮 */}
-                <div className="bottom-4 -left-14 fixed justify-end z-40">
+                {/* <div className="bottom-4 -left-14 fixed justify-end z-40">
                     <Live2D />
-                </div>
+                </div> */}
 
                 {/* 搜索框 */}
                 <AlgoliaSearchModal cRef={searchModal} {...props}/>
@@ -305,14 +304,6 @@ const LayoutTagIndex = (props) => {
 }
 
 export {
-  CONFIG as THEME_CONFIG,
-  LayoutBase,
-  LayoutIndex,
-  LayoutSearch,
-  LayoutArchive,
-  LayoutSlug,
-  Layout404,
-  LayoutPostList,
-  LayoutCategoryIndex,
-  LayoutTagIndex
+  Layout404, LayoutArchive, LayoutBase, LayoutCategoryIndex, LayoutIndex, LayoutPostList, LayoutSearch, LayoutSlug, LayoutTagIndex, CONFIG as THEME_CONFIG
 }
+

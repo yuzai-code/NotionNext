@@ -1,36 +1,35 @@
-import CONFIG from './config'
-import TopNav from './components/TopNav'
-import Live2D from '@/components/Live2D'
-import { useGlobal } from '@/lib/global'
-import Footer from './components/Footer'
-import { useEffect } from 'react'
-import RightFloatButtons from './components/RightFloatButtons'
-import { useRouter } from 'next/router'
-import SearchNave from './components/SearchNav'
-import BlogPostListPage from './components/BlogPostListPage'
-import BlogPostListScroll from './components/BlogPostListScroll'
-import Hero from './components/Hero'
-import Announcement from './components/Announcement'
-import CatalogWrapper from './components/CatalogWrapper'
-import TagItemMiddle from './components/TagItemMiddle'
-import PostHeader from './components/PostHeader'
-import Link from 'next/link'
-import ArticleAdjacent from './components/ArticleAdjacent'
 import Comment from '@/components/Comment'
-import ArticleCopyright from './components/ArticleCopyright'
-import ShareBar from '@/components/ShareBar'
+import replaceSearchResult from '@/components/Mark'
 import NotionPage from '@/components/NotionPage'
+import ShareBar from '@/components/ShareBar'
+import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
+import { isBrowser } from '@/lib/utils'
+import { Transition } from '@headlessui/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import Announcement from './components/Announcement'
+import ArticleAdjacent from './components/ArticleAdjacent'
+import ArticleCopyright from './components/ArticleCopyright'
 import { ArticleInfo } from './components/ArticleInfo'
 import { ArticleLock } from './components/ArticleLock'
-import BlogPostArchive from './components/BlogPostArchive'
-import Card from './components/Card'
-import JumpToCommentButton from './components/JumpToCommentButton'
 import BlogListBar from './components/BlogListBar'
-import { Transition } from '@headlessui/react'
+import BlogPostArchive from './components/BlogPostArchive'
+import BlogPostListPage from './components/BlogPostListPage'
+import BlogPostListScroll from './components/BlogPostListScroll'
+import Card from './components/Card'
+import CatalogWrapper from './components/CatalogWrapper'
+import Footer from './components/Footer'
+import Hero from './components/Hero'
+import JumpToCommentButton from './components/JumpToCommentButton'
+import PostHeader from './components/PostHeader'
+import RightFloatButtons from './components/RightFloatButtons'
+import SearchNave from './components/SearchNav'
+import TagItemMiddle from './components/TagItemMiddle'
+import TopNav from './components/TopNav'
+import CONFIG from './config'
 import { Style } from './style'
-import replaceSearchResult from '@/components/Mark'
-import { siteConfig } from '@/lib/config'
-import { isBrowser } from '@/lib/utils'
 
 /**
  * 基础布局
@@ -99,9 +98,9 @@ const LayoutBase = props => {
             </main>
 
             {/* 左下角悬浮 */}
-            <div className="bottom-4 -left-14 fixed justify-end z-40">
+            {/* <div className="bottom-4 -left-14 fixed justify-end z-40">
                 <Live2D />
-            </div>
+            </div> */}
 
             {/* 右下角悬浮 */}
             <RightFloatButtons {...props} floatRightBottom={floatRightBottom}/>
@@ -379,14 +378,8 @@ const LayoutTagIndex = props => {
 }
 
 export {
-  CONFIG as THEME_CONFIG,
-  LayoutBase,
-  LayoutIndex,
+  Layout404, LayoutArchive, LayoutBase, LayoutCategoryIndex, LayoutIndex,
   LayoutPostList,
-  LayoutSearch,
-  LayoutArchive,
-  LayoutSlug,
-  Layout404,
-  LayoutCategoryIndex,
-  LayoutTagIndex
+  LayoutSearch, LayoutSlug, LayoutTagIndex, CONFIG as THEME_CONFIG
 }
+
