@@ -1,16 +1,14 @@
+import { siteConfig } from '@/lib/config'
+import { useGlobal } from '@/lib/global'
+import dynamic from 'next/dynamic'
+import CONFIG from '../config'
+import { AnalyticsCard } from './AnalyticsCard'
+import Announcement from './Announcement'
 import Card from './Card'
 import CategoryGroup from './CategoryGroup'
+import { InfoCard } from './InfoCard'
 import LatestPostsGroup from './LatestPostsGroup'
 import TagGroups from './TagGroups'
-import Catalog from './Catalog'
-import { InfoCard } from './InfoCard'
-import { AnalyticsCard } from './AnalyticsCard'
-import CONFIG from '../config'
-import dynamic from 'next/dynamic'
-import Announcement from './Announcement'
-import { useGlobal } from '@/lib/global'
-import Live2D from '@/components/Live2D'
-import { siteConfig } from '@/lib/config'
 
 const HexoRecentComments = dynamic(() => import('./HexoRecentComments'))
 const FaceBookPage = dynamic(
@@ -72,7 +70,7 @@ export default function SideRight(props) {
       <Announcement post={notice}/>
 
       {siteConfig('COMMENT_WALINE_SERVER_URL') && siteConfig('COMMENT_WALINE_RECENT') && <HexoRecentComments/>}
-
+{/* 
       <div className='sticky top-20'>
         {post && post.toc && post.toc.length > 1 && <Card>
           <Catalog toc={post.toc} />
@@ -81,7 +79,7 @@ export default function SideRight(props) {
         {rightAreaSlot}
         <FaceBookPage/>
         <Live2D />
-      </div>
+      </div> */}
 
     </div>
   )
